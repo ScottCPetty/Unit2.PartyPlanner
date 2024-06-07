@@ -38,10 +38,11 @@ function renderParties() {
     const li = document.createElement("li")
     li.innerHTML = `
       <h2>${party.name}</h2>
-      <p>${party.date}</p>
-      <p>${party.time}</p>
-      <p>${party.location}</p>
-      <p>${party.description}</p>`
+      <p>Date: ${party.date}</p>
+      <p>Time: ${party.time}</p>
+      <p>Location: ${party.location}</p>
+      <p>Description: ${party.description}</p>
+      <button>Delete Party</button>`
     return li
   })
   partiesList.replaceChildren(...partyCards);
