@@ -6,10 +6,10 @@ const state = {
 
 const partiesList = document.querySelector("#parties")
 const addPartyForm = document.querySelector("#addParty")
-// const deletePartyButton = document.querySelector("#deleteParty")
+const deletePartyButton = document.querySelector(".deleteParty")
 
-// addPartyForm.addEventListener("submit", addParty)
-// deletePartyButton.addEventListener("submit", deleteParty)
+addPartyForm.addEventListener("submit", addParty)
+// deletePartyButton.addEventListener("click", deleteParty)
 
 
 async function render() {
@@ -42,12 +42,46 @@ function renderParties() {
       <p>Time: ${party.time}</p>
       <p>Location: ${party.location}</p>
       <p>Description: ${party.description}</p>
-      <button>Delete Party</button>`
+      <button class="deleteParty">Delete Party</button>`
     return li
   })
   partiesList.replaceChildren(...partyCards);
 }
 
-// async function deleteParty() {}
+// async function deleteParty() {
+//   try {
+//     const response = await fetch(API_URL, {
+//       method: "delete",
+//       headers: {"Content-Type": "application/json"},
+//     })
+//     if (!response.ok) {
+//       throw new Error("Failed to delete party")
+//     }
+//     render()
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
-// async function addParty() {}
+async function addParty(event) {
+  event.preventDefault()
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        name: addPartyForm.name.value,
+        date: addPartyForm.date.value,
+        time: addPartyForm.time.value,
+        location: addPartyForm.location.value,
+        description: addPartyForm.description.value,
+      }),
+    })
+    if (!response.ok) {
+      throw new Error("Failed to create party")
+    }
+    render()
+  } catch (error) {
+    console.error(error)
+  }
+}

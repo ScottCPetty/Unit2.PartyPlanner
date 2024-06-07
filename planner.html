@@ -9,29 +9,35 @@
 <body>
     <h1>Party Planner</h1>
     <form id="addParty">
+        <h2>Create a New Party:</h2>
         <label>
-            Name
+            Party Name:
             <input type="text" name="name" />
         </label>
+        <br>
         <label>
-            Date
+            Date:
+            <input type="date" name="date" />
+        </label>
+        <br>
+        <label>
+            Time:
+            <input type="time" name="time" />
+        </label>
+        <br>
+        <label>
+            Location:
+            <input type="text" name="location" />
+        </label>
+        <br>
+        <label>
+            Description:
             <input type="text" name="description" />
         </label>
-        <label>
-            Time
-            <input type="text" name="imageUrl" />
-        </label>
-        <label>
-            Location
-            <input type="text" name="imageUrl" />
-        </label>
-        <label>
-            Description
-            <input type="text" name="imageUrl" />
-        </label>
-        <button>Add Artist</button>
+        <button>Add Party</button>
     </form>
     <ul id="parties"></ul>
+    <!-- <button class="deleteParty">Delete Party</button> -->
 </body>
 <script src="planner.js"></script>
 </html>
